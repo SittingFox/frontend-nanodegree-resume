@@ -1,3 +1,8 @@
+/*
+ * A series of JSON setups that contain the data. Their display functions make 
+ * use of helper.js to put them on the page.
+ */
+
 var bio = {
 	"name": "Ash Ketchum",
 	"role": "Pokémon Trainer",
@@ -27,7 +32,8 @@ var bio = {
 		appendItem(header, HTMLwelcomeMsg, this.welcomeMessage);
 		
 		appendItem(header, HTMLskillsStart, '');
-		appendArray(header, HTMLskills, this.skills);
+		var skillsArea = $('#skills');
+		appendArray(skillsArea, HTMLskills, this.skills);
 	}
 };
 
@@ -53,27 +59,31 @@ var education = {
 	"display": function() {
 		var educationArea = $('#education');
 		
-		appendItem(educationArea, HTMLschoolStart, '');
-		
 		for (var i = 0; i < this.schools.length; i++) {
 			var school = this.schools[i];
+			appendItem(educationArea, HTMLschoolStart, '');
 			
-			appendItem(educationArea, HTMLschoolName, school.name);
-			appendItem(educationArea, HTMLschoolDegree, school.degree);
-			appendItem(educationArea, HTMLschoolDates, school.dates);
-			appendItem(educationArea, HTMLschoolLocation, school.location);
-			appendArray(educationArea, HTMLschoolMajor, school.majors);
+			var educationEntry = $('.education-entry:last');
+
+			appendItem(educationEntry, HTMLschoolName, school.name);
+			appendItem(educationEntry, HTMLschoolDegree, school.degree);
+			appendItem(educationEntry, HTMLschoolDates, school.dates);
+			appendItem(educationEntry, HTMLschoolLocation, school.location);
+			appendArray(educationEntry, HTMLschoolMajor, school.majors);
 		}
 		
 		appendItem(educationArea, HTMLonlineClasses, '');
 				
 		for (var i = 0; i < this.onlineCourses.length; i++) {
 			var course = this.onlineCourses[i];
+			appendItem(educationArea, HTMLschoolStart, '');
 			
-			appendItem(educationArea, HTMLonlineTitle, course.title);
-			appendItem(educationArea, HTMLonlineSchool, course.school);
-			appendItem(educationArea, HTMLonlineDates, course.date);
-			appendItem(educationArea, HTMLonlineURL, course.url);
+			var educationEntry = $('.education-entry:last');
+			
+			appendItem(educationEntry, HTMLonlineTitle, course.title);
+			appendItem(educationEntry, HTMLonlineSchool, course.school);
+			appendItem(educationEntry, HTMLonlineDates, course.date);
+			appendItem(educationEntry, HTMLonlineURL, course.url);
 		}
 	}
 };
@@ -91,16 +101,16 @@ var work = {
 	"display": function () {
 		var workArea = $('#workExperience');
 		
-		appendItem(workArea, HTMLworkStart, '');
-		
 		for (var i = 0; i < this.jobs.length; i++ ) {
 			var job = this.jobs[i];
+			appendItem(workArea, HTMLworkStart, '');
 			
-			appendItem(workArea, HTMLworkEmployer, job.employer);
-			appendItem(workArea, HTMLworkTitle, job.title);
-			appendItem(workArea, HTMLworkDates, job.dates);
-			appendItem(workArea, HTMLworkLocation, job.location);
-			appendItem(workArea, HTMLworkDescription, job.description);
+			var jobEntry = $('.work-entry:last');
+			appendTwoItems(jobEntry, HTMLworkEmployer, job.employer,
+				HTMLworkTitle, job.title);
+			appendItem(jobEntry, HTMLworkDates, job.dates);
+			appendItem(jobEntry, HTMLworkLocation, job.location);
+			appendItem(jobEntry, HTMLworkDescription, job.description);
 		}
 	}
 };
@@ -119,23 +129,34 @@ var projects = {
 	],
 	"display": function () {
 		var projectArea = $('#projects');
-		
-		appendItem(projectArea, HTMLprojectStart, '');
-		
+				
 		for (var i = 0; i < this.projects.length; i++ ) {
 			var project = this.projects[i];
-			
-			appendItem(projectArea, HTMLprojectTitle, project.title);
-			appendItem(projectArea, HTMLprojectDates, project.dates);
-			appendItem(projectArea, HTMLprojectDescription, project.description);
-			appendArray(projectArea, HTMLprojectImage, project.images);
+			appendItem(projectArea, HTMLprojectStart, '');
+
+			var projectEntry = $('.project-entry:last');
+			appendItem(projectEntry, HTMLprojectTitle, project.title);
+			appendItem(projectEntry, HTMLprojectDates, project.dates);
+			appendItem(projectEntry, HTMLprojectDescription, project.description);
+			appendArray(projectEntry, HTMLprojectImage, project.images);
 		}
 	}
 }
 
+/*
+ * These functions are meant to simplify the append and prepend process, or at 
+ * least make the code a heck of a lot cleaner.
+ */
+
 var appendItem = function (element, helper, item) {
 	var formattedItem = helper.replace("%data%", item);
 	element.append(formattedItem);
+}
+
+var appendTwoItems = function (element, helper1, item1, helper2, item2) {
+	var formattedItem1 = helper1.replace("%data%", item1);
+	var formattedItem2 = helper2.replace("%data%", item2);
+	element.append(formattedItem1 + formattedItem2);
 }
 
 var appendArray = function (element, helper, items) {
@@ -149,6 +170,11 @@ var prependItem = function (element, helper, item) {
 	element.prepend(formattedItem);
 }
 
+
+/*
+ * With each object having its own display function, call them all to get the 
+ * data up on the screen.
+ */
 
 bio.display();
 work.display();
