@@ -85,7 +85,9 @@ function logClicks(x,y) {
 }
 
 $(document).click(function(loc) {
-  // your code goes here!
+  // Call already defined logClicks function, passing in the specific X and Y
+  // coordinates.
+  logClicks(loc.clientX, loc.clientY);
 });
 
 
