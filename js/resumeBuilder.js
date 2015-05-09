@@ -21,12 +21,21 @@ var bio = {
 		prependItem(header, HTMLheaderRole, this.role);
 		prependItem(header, HTMLheaderName, this.name);
 		
+		// Add contact to top
 		var topContacts = $('#topContacts');
 		appendItem(topContacts, HTMLmobile, this.contacts.mobile);
 		appendItem(topContacts, HTMLemail, this.contacts.email);
 		appendItem(topContacts, HTMLgithub, this.contacts.github);
 		appendItem(topContacts, HTMLtwitter, this.contacts.twitter);
 		appendItem(topContacts, HTMLlocation, this.contacts.location);
+		
+		// Add contact to bottom
+		var footerContacts = $('#footerContacts');
+		appendItem(footerContacts, HTMLmobile, this.contacts.mobile);
+		appendItem(footerContacts, HTMLemail, this.contacts.email);
+		appendItem(footerContacts, HTMLgithub, this.contacts.github);
+		appendItem(footerContacts, HTMLtwitter, this.contacts.twitter);
+		appendItem(footerContacts, HTMLlocation, this.contacts.location);
 		
 		appendItem(header, HTMLbioPic, this.biopic);
 		appendItem(header, HTMLwelcomeMsg, this.welcomeMessage);
