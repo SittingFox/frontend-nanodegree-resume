@@ -194,7 +194,10 @@ function displayAll() {
 	education.display();
 	projects.display();
 	
+	// Display Internationalize Button
 	$('#main').append(internationalizeButton);
+	// Display Google Map
+	$("#mapDiv").append(googleMap);
 }
 
 displayAll();
