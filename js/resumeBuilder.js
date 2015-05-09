@@ -170,13 +170,31 @@ var prependItem = function (element, helper, item) {
 	element.prepend(formattedItem);
 }
 
+/*
+ * Result of clicking on internationalize button.
+ */
+function inName() {
+	var nameParts = bio.name.split(" ");
+	nameParts[0] = nameParts[0].slice(0,1).toUpperCase() + nameParts[0].slice(1).toLowerCase();
+	nameParts[1] = nameParts[1].toUpperCase();
+	var internationalName = nameParts.join(" ");
+	
+	return internationalName;
+}
+
 
 /*
  * With each object having its own display function, call them all to get the 
  * data up on the screen.
  */
 
-bio.display();
-work.display();
-education.display();
-projects.display();
+function displayAll() {
+	bio.display();
+	work.display();
+	education.display();
+	projects.display();
+	
+	$('#main').append(internationalizeButton);
+}
+
+displayAll();
