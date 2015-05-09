@@ -8,14 +8,14 @@ var bio = {
 	"role": "Pokémon Trainer",
 	"contacts": {
 		"mobile": "(150) 151-1000",
-		"email": "aketchum@émail.com",
+		"email": "aketchum@pokémail.com",
 		"github": "MAshter",
 		"twitter": "@GottaKetchumAll",
-		"location": "Setagaya, Tokyo"
+		"location": "Setagaya, Tokyo, Japan"
 	},
 	"welcomeMessage": "Welcome to my page!",
 	"skills": ["training", "hardworking", "surviving Thundershocks"],
-	"biopic": "http://placekitten.com/g/150/150",
+	"biopic": "images/ash.jpg",
 	"display": function () {
 		var header = $('#header');
 		prependItem(header, HTMLheaderRole, this.role);
@@ -41,7 +41,7 @@ var education = {
 	"schools": [
 		{
 			"name": "Pokémon Technical Institute",
-			"location": "Setagaya, Tokyo",
+			"location": "Tokyo, Japan",
 			"degree": "none",
 			"majors": ["training"],
 			"dates": 1997,
@@ -93,7 +93,7 @@ var work = {
 		{
 			"employer": "Self-employed",
 			"title": "Pokémon Trainer",
-			"location": "Tokyo, Japan,",
+			"location": "Kanto, Japan",
 			"dates": "1997-present",
 			"description": "Traveling around the world, collecting and training Pokémon."
 		}
@@ -122,8 +122,7 @@ var projects = {
 			"dates": "1997-present",
 			"description": "An index on the many different Pokémon.",
 			"images": [
-				"http://placekitten.com/g/200/250",
-				"http://placekitten.com/g/200/250"
+				"images/pokedex.jpg"
 			]
 		}
 	],
