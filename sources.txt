@@ -1,0 +1,8 @@
+All code is my own, influenced from what I learned from the JavaScript Basics
+course at Udacity. There is at least one point in my git history where I forgot 
+about :last in jQuery and instead used .last(), which I looked up and found 
+here: https://api.jquery.com/last/
+
+The bio picture is an image from the Pokémon TV show, while the PokéDex image is 
+from Bulbapedia here: 
+http://bulbapedia.bulbagarden.net/wiki/File:Gen_I_Pokedex.png
